@@ -11,7 +11,12 @@ This is one of the two competitions in ECML-PKDD 2015.
    1. The square region is defined by `-8.729766,-7.542072,41.062563,41.562351`.
 
 ## Other information
+1. Some statistics about data
 
+   | Number of Training points | Number of test points|
+   |---:|---:|
+   |1710670 | 320 |
+ 
 1. Relationship between coordinate and distance
 
    |Different in coordinate|Distance in km|
