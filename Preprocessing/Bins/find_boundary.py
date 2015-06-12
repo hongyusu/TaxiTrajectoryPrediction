@@ -31,7 +31,7 @@ def find_boundary():
             if boundary[3] < r:
               boundary[3] = r
   fout = open('../../Preprocessing/Results/boundary','w')
-  fout.write(','.join(map(str,boundary)))
+  fout.write('%s\n' % ','.join(map(str,boundary)))
   fout.close()
   pass
 
