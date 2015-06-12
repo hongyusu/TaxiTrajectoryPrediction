@@ -1,5 +1,7 @@
 
-# Taxi Trajectory Prediction, ECML-PKDD 2015
+# Taxi Trajectory Prediction
+
+This is one of the two competitions in ECML-PKDD 2015.
 
 ## Data preprocessing
 
