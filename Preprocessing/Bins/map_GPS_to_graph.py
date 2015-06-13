@@ -7,6 +7,7 @@
 import csv
 import re
 from compute_location_from_gps import compute_location_from_gps
+import os
 
 # define boundary
 for line in open('../../Preprocessing/Results/boundary'):
@@ -17,6 +18,8 @@ for line in open('../../Preprocessing/Results/boundary'):
 gps_delta = 0.001  # 100m
 
 def map_GPS_to_location(filename):
+  fout_v = open('../../Preprocessing/Results/data_v','w')
+  fout_e = open('../../Preprocessing/Results/data_e','w')
   locationinformation = {}
   fout = open('../../Preprocessing/Results/%s_location' % filename, 'w')
   lineind = -1
@@ -32,14 +35,17 @@ def map_GPS_to_location(filename):
     for context in re.sub(r'^\[|]]"','',words[1]).split('],['):
         (l,r) = map(float,context.split(','))
         (l,r) = compute_location_from_gps(boundary, gps_delta,(l,r))
+        if pl==-1:
+          (pl, pr) = (l,r)
+          continue
         if l==pl and r == pr:
           continue
-        if not l in locationinformation.keys():
-          locationinformation[l] = {}
-        if not r in locationinformation[l].keys():
-          locationinformation[l][r] = 0
-        locationinformation[l][r] += 1
-        (pl, pr) = (l,r)
+        loc = '%d %d' % (l, r)
+        ploc = '%d %d' % (pl, pr)
+        fout_v.write("%s\n" % loc)
+        if l>pl+1 or r>pr+1:
+          print ploc,loc
+        fout_e.write("%s %s\n" % (ploc,loc))
         if s == '"[':
           s += '[%d,%d]' % (l,r)
         else:
@@ -47,14 +53,12 @@ def map_GPS_to_location(filename):
     s += ']"'
     fout.write(words[0] + ',' + s + '\n')
   fout.close()
-  fout = open('../../Preprocessing/Results/locationsinformation','w')
-  for l in locationinformation.keys():
-    for r in locationinformation[l].keys():
-      fout.write('%d %d %d\n' % (l,r,locationinformation[l][r]))
-  fout.close()
+  fout_e.close()
+  fout_v.close()
   pass
 
 def map_location_to_id(filename):
+  os.system('cat ../../Preprocessing/Results/locationinformation| sort |uniq -c | sort -k2,2n -k3,3n -k1,1n > ../../Preprocessing/Results/tmp; mv ../../Preprocessing/Results/tmp ../../Preprocessing/Results/locationinformation')
   pass
 
 
