@@ -14,6 +14,7 @@ This is one of the two competitions in ECML-PKDD 2015.
    1. The block is defined as a 100m X 100m square. Each block is a potential node in the underlying graph.
    1. Map points in the trajectories into nodes.
    1. Mapping reults
+
       |Block size|Difference in GPS|#Nodes|#Edges|
       |---:|---:|---:|
       |||
