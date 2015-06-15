@@ -50,6 +50,7 @@ def map_GPS_to_location(filename):
           s += '[%d,%d]' % (l,r)
         else:
           s += ',[%d,%d]' % (l,r)
+        (pl, pr) = (l,r)
     s += ']"'
     fout.write(words[0] + ',' + s + '\n')
   fout.close()

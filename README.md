@@ -13,11 +13,16 @@ This is one of the two competitions in ECML-PKDD 2015.
    1. Define blocks inside the boundary
    1. The block is defined as a 100m X 100m square. Each block is a potential node in the underlying graph.
    1. Map points in the trajectories into nodes.
+   1. Mapping reults
+      |Block size|Difference in GPS|#Nodes|#Edges|
+      |---:|---:|---:|
+      |||
+      |||
 
 ## Other information
 1. Some statistics about data
 
-   | Number of Training points | Number of test points|
+   | Number of Training records | Number of test records|
    |---:|---:|
    |1710670 | 320 |
  
